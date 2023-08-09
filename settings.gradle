@@ -1,0 +1,4 @@
+rootProject.name = "Cards"
+include ':app'
+include ':core'
+include ':testing'

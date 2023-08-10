@@ -1,5 +1,6 @@
 package com.thiagomonteiro.cards.framework.di
 
+import com.thiagomonteiro.cards.BuildConfig
 import com.thiagomonteiro.cards.framework.di.qualifier.BaseUrl
 import com.thiagomonteiro.cards.framework.network.CardsApi
 import com.thiagomonteiro.cards.framework.network.interceptor.AuthorizationInterceptor
@@ -26,14 +27,13 @@ object NetworkModule {
         }
     }
 
-//    @Provides
-//    fun provideAuthorizationInterceptor(): AuthorizationInterceptor {
-//        return AuthorizationInterceptor(
-//            publicKey = BuildConfig.PUBLIC_KEY,
-//            privateKey = BuildConfig.PRIVATE_KEY,
-//            calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-//        )
-//    }
+    @Provides
+    fun provideAuthorizationInterceptor(): AuthorizationInterceptor {
+        return AuthorizationInterceptor(
+            apiKey = BuildConfig.API_KEY,
+            apiHost = BuildConfig.API_HOST
+        )
+    }
 
     @Provides
     fun provideOkHttpClient(

@@ -28,8 +28,8 @@ android {
 
         testInstrumentationRunnerArguments clearPackageData: 'true'
 
-        buildConfigField "String", "PUBLIC_KEY", apikeyProperties['PUBLIC_KEY']
-        buildConfigField "String", "PRIVATE_KEY", apikeyProperties['PRIVATE_KEY']
+        buildConfigField "String", "API_KEY", apikeyProperties['API_KEY']
+        buildConfigField "String", "API_HOST", '"omgvamp-hearthstone-v1.p.rapidapi.com"'
         buildConfigField "String", "BASE_URL", '"https://omgvamp-hearthstone-v1.p.rapidapi.com/"'
     }
 
@@ -51,6 +51,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

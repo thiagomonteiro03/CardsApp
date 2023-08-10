@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Cards</string>
+    <string name="error_loading_data">Erro ao tentar carregar os dados</string>
+    <string name="common_try_again">Tente novamente</string>
 </resources>

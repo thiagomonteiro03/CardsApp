@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import com.thiagomonteiro.cards.databinding.FragmentCardsBinding
 import com.thiagomonteiro.cards.framework.imageloader.ImageLoader
 import com.thiagomonteiro.cards.presentation.common.getGenericAdapterOf
+import com.thiagomonteiro.cards.presentation.detail.DetailViewArg
 import com.thiagomonteiro.cards.presentation.enums.CardSetType
 import com.thiagomonteiro.cards.presentation.extensions.toCardItemList
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +31,20 @@ class CardsFragment : Fragment() {
 
     private val cardsAdapter by lazy {
         getGenericAdapterOf {
-            CardsViewHolder.create(it, imageLoader)
+            CardsViewHolder.create(it, imageLoader) { card ->
+
+                val directions = CardsFragmentDirections
+                    .actionCardsFragmentToDetailFragment(
+                        card.name,
+                        DetailViewArg(
+                            card.cardId,
+                            card.name,
+                            card.image?: ""
+                        )
+                    )
+
+                findNavController().navigate(directions)
+            }
         }
     }
 
@@ -46,7 +62,6 @@ class CardsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initCardsAdapter()
-
         setupButtonListeners()
 
         viewModel.state.observe(viewLifecycleOwner) { uiState ->

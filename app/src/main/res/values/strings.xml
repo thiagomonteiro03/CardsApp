@@ -6,4 +6,14 @@
     <string name="card_set_classic">Classic</string>
     <string name="card_set_naxxramas">Naxxramas</string>
     <string name="select_card_set">Selecione um conjunto de cards:</string>
+    <string name="name">Nome</string>
+    <string name="short_description">Descrição curta</string>
+    <string name="flavor_description">Descrição de flavor</string>
+    <string name="set_card">Conjunto de card</string>
+    <string name="type">Tipo</string>
+    <string name="faction">Facção</string>
+    <string name="rarity">Raridade</string>
+    <string name="attack">Ataque</string>
+    <string name="cost">Custo</string>
+    <string name="health">Vida</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.thiagomonteiro.cards.framework.di
 
+import com.thiagomonteiro.core.usecase.GetCardByIdUseCase
+import com.thiagomonteiro.core.usecase.GetCardByIdUseCaseImpl
 import com.thiagomonteiro.core.usecase.GetCardsBySetUseCase
 import com.thiagomonteiro.core.usecase.GetCardsBySetUseCaseImpl
 import com.thiagomonteiro.core.usecase.GetCardsUseCase
@@ -18,4 +20,7 @@ interface UseCaseModule {
 
     @Binds
     fun bindGetCardsBySetUseCase(useCase: GetCardsBySetUseCaseImpl): GetCardsBySetUseCase
+
+    @Binds
+    fun bindGetCardByIdUseCase(useCase: GetCardByIdUseCaseImpl): GetCardByIdUseCase
 }

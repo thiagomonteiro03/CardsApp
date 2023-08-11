@@ -1,7 +1,7 @@
 package com.thiagomonteiro.cards.framework.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.thiagomonteiro.core.domain.model.CardSet
+import com.thiagomonteiro.core.domain.model.Sets
 
 data class CardSetResponse(
     @SerializedName("Basic")
@@ -12,8 +12,8 @@ data class CardSetResponse(
     val naxxramas: List<CardResponse>,
 )
 
-fun CardSetResponse.toCardSetModel(): CardSet {
-    return CardSet(
+fun CardSetResponse.toCardSetModel(): Sets {
+    return Sets(
         basic = basic.map { it.toCardModel() },
         classic = classic.map { it.toCardModel() },
         naxxramas = naxxramas.map { it.toCardModel() }

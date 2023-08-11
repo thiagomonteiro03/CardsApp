@@ -15,4 +15,9 @@ interface CardsApi {
         @Path("cardSet") cardSet: String
     ): List<CardResponse>
 
+    @GET("cards/{cardId}")
+    suspend fun getCardById(
+        @Path("cardId") cardId: String
+    ): List<CardResponse>
+
 }

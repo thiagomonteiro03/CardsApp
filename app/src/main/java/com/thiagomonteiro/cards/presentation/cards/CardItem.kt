@@ -4,6 +4,7 @@ import com.thiagomonteiro.cards.presentation.common.ListItem
 
 data class CardItem(
     val id: Long,
+    val cardId: String,
     val name: String,
     val image: String?,
     override val key: Long = id

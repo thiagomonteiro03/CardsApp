@@ -37,7 +37,7 @@ class CardsViewModel @Inject constructor(
                                 emit(UiState.Success(data.basic))
                         },
                         error = {
-                            emit(UiState.Error(it))
+                            emit(UiState.Error)
                         }
                     )
                 }
@@ -56,7 +56,7 @@ class CardsViewModel @Inject constructor(
                             emit(UiState.Success(data))
                         },
                         error = {
-                            emit(UiState.Error(it))
+                            emit(UiState.Error)
                         }
                     )
                 }
@@ -75,7 +75,7 @@ class CardsViewModel @Inject constructor(
     sealed class UiState {
         object Loading : UiState()
         data class Success(val cards: List<Card>) : UiState()
-        class Error(val throwable: Throwable) : UiState()
+        object Error : UiState()
         object Empty : UiState()
     }
 

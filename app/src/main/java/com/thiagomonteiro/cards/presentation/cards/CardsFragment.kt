@@ -65,7 +65,7 @@ class CardsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initCardsAdapter()
-        setupButtonListeners()
+        setupChipGroupListeners()
         observeUiState()
 
         val cardSet = getCurrentCardSet().ifEmpty {
@@ -81,25 +81,25 @@ class CardsFragment : Fragment() {
         }
     }
 
-    private fun setupButtonListeners() {
+    private fun setupChipGroupListeners() {
         with(binding){
             CardSetType.BASIC_CARD_SET.let { type ->
-                buttonCardSetBasic.text = getString(type.label)
-                buttonCardSetBasic.setOnClickListener {
+                chipCardSetBasic.text = getString(type.label)
+                chipCardSetBasic.setOnClickListener {
                     viewModel.getCardsBySet(type.queryParameter)
                 }
             }
 
             CardSetType.CLASSIC_CARD_SET.let { type ->
-                buttonCardSetClassic.text = getString(type.label)
-                buttonCardSetClassic.setOnClickListener {
+                chipCardSetClassic.text = getString(type.label)
+                chipCardSetClassic.setOnClickListener {
                     viewModel.getCardsBySet(type.queryParameter)
                 }
             }
 
             CardSetType.NAXXRAMAS_CARD_SET.let { type ->
-                buttonCardSetNaxxramas.text = getString(type.label)
-                buttonCardSetNaxxramas.setOnClickListener {
+                chipCardSetNaxxramas.text = getString(type.label)
+                chipCardSetNaxxramas.setOnClickListener {
                     viewModel.getCardsBySet(type.queryParameter)
                 }
             }

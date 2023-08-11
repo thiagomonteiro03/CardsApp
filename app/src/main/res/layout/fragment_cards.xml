@@ -14,36 +14,38 @@
         android:layout_margin="8dp"
         android:text="@string/select_card_set" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
-
-        <Button
-            android:id="@+id/button_card_set_basic"
-            android:layout_width="wrap_content"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_order_by"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:layout_weight="1"
-            tools:text="@string/card_set_basic" />
+            app:checkedChip="@id/chip_card_set_basic"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true">
 
-        <Button
-            android:id="@+id/button_card_set_classic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            tools:text="@string/card_set_classic" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_card_set_basic"
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/card_set_basic" />
 
-        <Button
-            android:id="@+id/button_card_set_naxxramas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            tools:text="@string/card_set_naxxramas" />
-    </LinearLayout>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_card_set_classic"
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/card_set_classic"  />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_card_set_naxxramas"
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/card_set_naxxramas"  />
+
+        </com.google.android.material.chip.ChipGroup>
 
     <ViewFlipper
         android:id="@+id/flipper_cards"

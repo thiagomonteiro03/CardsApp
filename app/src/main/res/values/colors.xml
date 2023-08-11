@@ -5,5 +5,9 @@
 
     <!--Cards colors-->
     <color name="medium_grey">#D1D1D1</color>
+    <color name="checked_chip">#FF6750A4</color>
+    <color name="unchecked_chip">#B6A6D3</color>
+    <color name="checked_chip_text">@color/white</color>
+    <color name="unchecked_chip_text">@android:color/background_dark</color>
 
 </resources>

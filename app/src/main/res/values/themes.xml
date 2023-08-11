@@ -3,7 +3,17 @@
     <style name="Base.Theme.Cards" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="chipStyle">@style/CardsChip</item>
     </style>
 
     <style name="Theme.Cards" parent="Base.Theme.Cards" />
+
+
+    <style name="CardsChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/card_chip_background_color</item>
+        <item name="android:textColor">@color/card_chip_text_color</item>
+        <item name="checkedIconTint">@color/card_chip_text_color</item>
+    </style>
+
 </resources>

@@ -8,8 +8,6 @@ data class CardSetResponse(
     val basic: List<CardResponse>,
     @SerializedName("Classic")
     val classic: List<CardResponse>,
-    @SerializedName("Hall of Fame")
-    val hallOfFame: List<CardResponse>,
     @SerializedName("Naxxramas")
     val naxxramas: List<CardResponse>,
 )
@@ -18,7 +16,6 @@ fun CardSetResponse.toCardSetModel(): CardSet {
     return CardSet(
         basic = basic.map { it.toCardModel() },
         classic = classic.map { it.toCardModel() },
-        hallOfFame = hallOfFame.map { it.toCardModel() },
         naxxramas = naxxramas.map { it.toCardModel() }
     )
 }

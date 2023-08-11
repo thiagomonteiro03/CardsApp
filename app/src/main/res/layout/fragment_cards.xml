@@ -11,13 +11,58 @@
         android:id="@+id/include_view_cards_loading_state"
         layout="@layout/include_view_cards_loading_state" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_cards"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_card"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_card_set"
+            android:layout_margin="8dp"
+            style="@style/MaterialAlertDialog.Material3.Title.Text"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/button_card_set_basic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                tools:text="@string/card_set_basic"/>
+
+            <Button
+                android:id="@+id/button_card_set_classic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                tools:text="@string/card_set_classic"/>
+
+            <Button
+                android:id="@+id/button_card_set_naxxramas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                tools:text="@string/card_set_naxxramas"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_cards"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_card"/>
+
+    </LinearLayout>
 
     <include
         android:id="@+id/include_view_cards_error_state"

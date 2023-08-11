@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/cardsFragment"
         android:name="com.thiagomonteiro.cards.presentation.cards.CardsFragment"
-        android:label="fragment_cards"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_cards" />
 </navigation>

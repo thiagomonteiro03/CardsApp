@@ -1,17 +1,18 @@
 package com.thiagomonteiro.cards.framework.network
 
+import com.thiagomonteiro.cards.framework.network.response.CardResponse
 import com.thiagomonteiro.cards.framework.network.response.CardSetResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface CardsApi {
 
-//    @GET("cards")
-//    suspend fun getCards(
-//        @Path("characterId")
-//        characterId: Int
-//    ): Response<CardSetResponse>
-
     @GET("cards")
     suspend fun getCards(): CardSetResponse
+
+    @GET("cards/sets/{cardSet}")
+    suspend fun getCardsBySet(
+        @Path("cardSet") cardSet: String
+    ): List<CardResponse>
 
 }

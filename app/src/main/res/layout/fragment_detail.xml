@@ -1,180 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.detail.DetailFragment">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/image_card"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription"
-        tools:srcCompat="@tools:sample/avatars"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".presentation.detail.DetailFragment">
 
-    <ViewFlipper
-        android:id="@+id/flipper_detail"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_card">
-
-        <include
-            android:id="@+id/include_view_cards_loading_state"
-            layout="@layout/include_view_detail_loading_state" />
-
-        <ScrollView
+        <ImageView
+            android:id="@+id/image_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="400dp"
+            android:scaleType="fitCenter"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ViewFlipper
+            android:id="@+id/flipper_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_card">
+
+            <include
+                android:id="@+id/include_view_cards_loading_state"
+                layout="@layout/include_view_detail_loading_state" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/tv_attack"
+                        style="@style/MaterialAlertDialog.Material3.Body.Text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textSize="28sp"
+                        app:drawableTint="@android:color/holo_orange_dark"
+                        app:drawableTopCompat="@drawable/ic_attack"
+                        tools:text="6" />
+
+                    <TextView
+                        android:id="@+id/tv_cost"
+                        style="@style/MaterialAlertDialog.Material3.Body.Text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textSize="28sp"
+                        app:drawableTint="@android:color/holo_blue_light"
+                        app:drawableTopCompat="@drawable/ic_cost"
+                        tools:text="3" />
+
+                    <TextView
+                        android:id="@+id/tv_health"
+                        style="@style/MaterialAlertDialog.Material3.Body.Text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:textSize="28sp"
+                        app:drawableTint="@android:color/holo_green_dark"
+                        app:drawableTopCompat="@drawable/ic_health"
+                        tools:text="10" />
+
+                </LinearLayout>
 
                 <TextView
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/set_card" />
+                    android:layout_margin="8dp"
+                    android:text="@string/set_card"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tv_set_card"
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
+                    android:layout_margin="8dp" />
 
                 <TextView
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/type" />
+                    android:layout_margin="8dp"
+                    android:text="@string/type"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tv_type"
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
+                    android:layout_margin="8dp" />
 
                 <TextView
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/faction" />
+                    android:layout_margin="8dp"
+                    android:text="@string/faction"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tv_faction"
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
+                    android:layout_margin="8dp" />
 
                 <TextView
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/rarity" />
+                    android:layout_margin="8dp"
+                    android:text="@string/rarity"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tv_rarity"
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
+                    android:layout_margin="8dp" />
 
                 <TextView
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/attack" />
-
-                <TextView
-                    android:id="@+id/tv_attack"
-                    style="@style/MaterialAlertDialog.Material3.Body.Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
-
-                <TextView
-                    style="@style/MaterialAlertDialog.Material3.Body.Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/cost" />
-
-                <TextView
-                    android:id="@+id/tv_cost"
-                    style="@style/MaterialAlertDialog.Material3.Body.Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
-
-                <TextView
-                    style="@style/MaterialAlertDialog.Material3.Body.Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/health" />
-
-                <TextView
-                    android:id="@+id/tv_health"
-                    style="@style/MaterialAlertDialog.Material3.Body.Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
-
-                <TextView
-                    style="@style/MaterialAlertDialog.Material3.Body.Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/short_description" />
+                    android:layout_margin="8dp"
+                    android:text="@string/short_description"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tv_short_description"
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
+                    android:layout_margin="8dp" />
 
                 <TextView
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="@string/flavor_description" />
+                    android:layout_margin="8dp"
+                    android:text="@string/flavor_description"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tv_flavor_description"
                     style="@style/MaterialAlertDialog.Material3.Body.Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp" />
+                    android:layout_margin="8dp" />
 
             </LinearLayout>
 
-        </ScrollView>
+            <include
+                android:id="@+id/include_error_view"
+                layout="@layout/include_error_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <include
-            layout="@layout/include_error_view"
-            android:id="@+id/include_error_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        </ViewFlipper>
 
-    </ViewFlipper>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

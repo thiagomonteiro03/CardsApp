@@ -3,6 +3,7 @@ package com.thiagomonteiro.cards.presentation.cards
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.distinctUntilChanged
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.thiagomonteiro.cards.presentation.extensions.watchStatus
@@ -21,7 +22,9 @@ class CardsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val action = MutableLiveData<Action>()
-    val state: LiveData<UiState> = action.switchMap {
+    val state: LiveData<UiState> = action
+        .distinctUntilChanged()
+        .switchMap {
         liveData(coroutinesDispatchers.main()) {
             when (it) {
                 is Action.GetAllCards -> {
@@ -47,9 +50,9 @@ class CardsViewModel @Inject constructor(
                             emit(UiState.Loading)
                         },
                         success = { data ->
-//                            if (data.basic.isEmpty())
-//                                emit(UiState.Empty)
-//                            else
+                            if (data.isEmpty())
+                                emit(UiState.Empty)
+                            else
                             emit(UiState.Success(data))
                         },
                         error = {

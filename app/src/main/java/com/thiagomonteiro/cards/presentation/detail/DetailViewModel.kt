@@ -30,7 +30,6 @@ class DetailViewModel @Inject constructor(
                             emit(DetailUiState.Loading)
                         },
                         success = { data ->
-                            // Sending only one cardSet because this feature is not yet implemented
                             emit(DetailUiState.Success(data))
                         },
                         error = {

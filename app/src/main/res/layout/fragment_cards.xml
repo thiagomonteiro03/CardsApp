@@ -1,71 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/flipper_cards"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.cards.CardsFragment">
+    android:orientation="vertical">
 
-    <include
-        android:id="@+id/include_view_cards_loading_state"
-        layout="@layout/include_view_cards_loading_state" />
+    <TextView
+        style="@style/MaterialAlertDialog.Material3.Title.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/select_card_set" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-        <TextView
+        <Button
+            android:id="@+id/button_card_set_basic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/select_card_set"
             android:layout_margin="8dp"
-            style="@style/MaterialAlertDialog.Material3.Title.Text"/>
+            android:layout_weight="1"
+            tools:text="@string/card_set_basic" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/button_card_set_classic"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            tools:text="@string/card_set_classic" />
 
-            <Button
-                android:id="@+id/button_card_set_basic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                tools:text="@string/card_set_basic"/>
-
-            <Button
-                android:id="@+id/button_card_set_classic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                tools:text="@string/card_set_classic"/>
-
-            <Button
-                android:id="@+id/button_card_set_naxxramas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_weight="1"
-                tools:text="@string/card_set_naxxramas"/>
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_cards"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_card"/>
-
+        <Button
+            android:id="@+id/button_card_set_naxxramas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            tools:text="@string/card_set_naxxramas" />
     </LinearLayout>
 
-    <include
-        android:id="@+id/include_view_cards_error_state"
-        layout="@layout/include_error_view" />
+    <ViewFlipper
+        android:id="@+id/flipper_cards"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.cards.CardsFragment">
 
-</ViewFlipper>
+        <include
+            android:id="@+id/include_view_cards_loading_state"
+            layout="@layout/include_view_cards_loading_state" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_cards"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_card" />
+
+        <TextView
+            android:id="@+id/text_no_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:alpha="0.5"
+            android:padding="16dp"
+            android:text="@string/common_no_results_found"
+            app:drawableTopCompat="@drawable/ic_neutral"/>
+
+        <include
+            android:id="@+id/include_view_cards_error_state"
+            layout="@layout/include_error_view" />
+
+    </ViewFlipper>
+
+</LinearLayout>

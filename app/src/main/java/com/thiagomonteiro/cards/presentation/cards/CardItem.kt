@@ -6,6 +6,7 @@ data class CardItem(
     val id: Long,
     val cardId: String,
     val name: String,
+    val cardSet: String,
     val image: String?,
     override val key: Long = id
 ) : ListItem

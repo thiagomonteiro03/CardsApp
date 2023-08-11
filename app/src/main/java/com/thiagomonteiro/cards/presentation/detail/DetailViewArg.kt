@@ -9,5 +9,6 @@ import kotlinx.parcelize.Parcelize
 data class DetailViewArg(
     val cardId: String,
     val name: String,
+    val cardSet: String,
     val imageUrl: String
 ): Parcelable

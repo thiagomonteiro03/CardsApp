@@ -16,4 +16,5 @@
     <string name="attack">Ataque</string>
     <string name="cost">Custo</string>
     <string name="health">Vida</string>
+    <string name="common_no_results_found">Nenhum resultado encontrado</string>
 </resources>

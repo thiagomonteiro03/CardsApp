@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.transition.TransitionInflater
 import com.thiagomonteiro.cards.databinding.FragmentDetailBinding
 import com.thiagomonteiro.cards.framework.imageloader.ImageLoader
+import com.thiagomonteiro.cards.presentation.common.ArgsConstants
+import com.thiagomonteiro.core.domain.model.Card
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.math.cos
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
@@ -43,35 +44,42 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val detailViewArg = args.detailViewArg
 
+        loadImageCard(detailViewArg)
+        setCurrentCardSet(detailViewArg.cardSet)
+        observeDetailUiState(detailViewArg)
+
+        viewModel.loadData(detailViewArg.cardId)
+    }
+
+    private fun loadImageCard(detailViewArg: DetailViewArg) {
         binding.imageCard.run {
             imageLoader.load(this, detailViewArg.imageUrl)
         }
+    }
 
+    private fun setCurrentCardSet(cardSet: String) {
+        val result = Bundle().apply {
+            putString(ArgsConstants.CURRENT_CARD_SET_PARAMETER, cardSet)
+        }
+        findNavController().previousBackStackEntry?.savedStateHandle
+            ?.set(ArgsConstants.CURRENT_CARD_SET_PARAMETER, result)
+    }
+
+    private fun observeDetailUiState(detailViewArg: DetailViewArg) {
         viewModel.state.observe(viewLifecycleOwner) { uiState ->
-            binding.flipperDetail.displayedChild = when (uiState){
+            binding.flipperDetail.displayedChild = when (uiState) {
                 is DetailViewModel.DetailUiState.Loading -> {
                     setShimmerVisibility(true)
                     FLIPPER_CHILD_LOADING
                 }
-                is DetailViewModel.DetailUiState.Success -> {
-                    with(binding){
-                        uiState.card.run {
-                            tvSetCard.text = cardSet
-                            tvType.text = type
-                            tvFaction.text = faction
-                            tvRarity.text = rarity
-                            tvAttack.text = attack.toString()
-                            tvCost.text = cost.toString()
-                            tvHealth.text = health.toString()
-                            tvShortDescription.text = shortDescription
-                            tvFlavorDescription.text = flavorDescription
 
-                        }
-                    }
+                is DetailViewModel.DetailUiState.Success -> {
+                    setsViewData(uiState.card)
 
                     setShimmerVisibility(false)
                     FLIPPER_CHILD_SUCCESS
                 }
+
                 is DetailViewModel.DetailUiState.Error -> {
                     setShimmerVisibility(false)
                     binding.includeErrorView.buttonRetry.setOnClickListener {
@@ -79,13 +87,26 @@ class DetailFragment : Fragment() {
                     }
                     FLIPPER_CHILD_ERROR
                 }
+
                 else -> {
                     FLIPPER_CHILD_ERROR
                 }
             }
         }
+    }
 
-        viewModel.loadData(detailViewArg.cardId)
+    private fun setsViewData(card: Card) {
+        with(binding) {
+            tvSetCard.text = card.cardSet
+            tvType.text = card.type
+            tvFaction.text = card.faction ?: " - "
+            tvRarity.text = card.rarity ?: " - "
+            tvAttack.text = card.attack?.toString() ?: " - "
+            tvCost.text = card.cost?.toString() ?: " - "
+            tvHealth.text = card.health?.toString() ?: " - "
+            tvShortDescription.text = card.shortDescription ?: " - "
+            tvFlavorDescription.text = card.flavorDescription ?: " - "
+        }
     }
 
     private fun setShimmerVisibility(visibility: Boolean) {

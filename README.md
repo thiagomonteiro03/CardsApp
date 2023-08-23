@@ -1,27 +1,27 @@
 # CardsApp
-Um desafio de 4 dias para demonstrar minhas habilidades técnicas em android, arquitetura e padrões de projeto.
+A 4-day challenge to showcase my technical skills in Android development, architecture, and design patterns.
 
 ## 🚀 Getting Started
 
-### Pré requisitos
+### Prerequisites
 
-- Ter a ApiKey da [api do Hearthstone](https://rapidapi.com/omgvamp/api/hearthstone)
-- Para rodar esta aplicação basta ter o Android Studio instalado na sua máquina e um dispositivo ou emulador para rodá-lo. 
-- Talvez seja necessário fazer alguns ajustes no gradle.
+- Have the API Key from the [Hearthstone API](https://rapidapi.com/omgvamp/api/hearthstone)
+- To run this application, you need to have Android Studio installed on your machine and a device or emulator to run it.
+- You might need to make some adjustments in the gradle.
 
 ### Clone
 
-- Clone este repositório para sua máquina local utilizando este link:
+- Clone this repository to your local machine using this link:
 
 ```
 https://github.com/thiagomonteiro03/EventsApp.git
 ```
 
-### Adicione a sua ApiKey ao projeto
+### Add your API Key to the project
 
-- Vá para o diretório principal do projeto e localize o arquivo 'apikey.properties'
-- Adicione a sua ApiKey ao projeto
+- Go to the project's main directory and locate the 'apikey.properties' file.
+- Add your API Key to the project:
 
 ```
-API_KEY="SuaApiKey"
+API_KEY="YourApiKey"
 ```
